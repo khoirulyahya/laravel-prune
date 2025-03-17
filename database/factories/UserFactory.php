@@ -29,6 +29,14 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'created_at' => $createdAt = collect([
+                now()->subMonth(2),
+                now()->subMonth(1),
+                now()->subWeek(2),
+                now()->subWeek(1),
+                now()
+            ])->random(1)->first(),
+            'updated_at' => $createdAt,
         ];
     }
 
