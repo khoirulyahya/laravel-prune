@@ -15,5 +15,11 @@ The original tutorial was written for **Laravel 10**, but this implementation ad
 ## 🛠 Installation  
 1. Clone this repository:  
    ```sh
-   git clone https://github.com/username/repo-name.git
-   cd repo-name
+   git clone https://github.com/khoirulyahya/laravel-prune.git
+   cd laravel-prune
+
+## 📖 References  
+This project is based on a tutorial by Parsinta:  
+🔗 [Laravel Pruning: Keeping Your Database Lightweight and Efficient](https://parsinta.com/articles/tutorial-laravel-pruning-menjaga-database-anda-tetap-ringan-dan-efisien-sengk).  
+
+I have adapted the implementation for **Laravel 12**, adjusting the command registration to follow the new structure in `routes/console.php`.
