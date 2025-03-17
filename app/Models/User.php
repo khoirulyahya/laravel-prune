@@ -6,11 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Prunable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Prunable;
 
     /**
      * The attributes that are mass assignable.
@@ -44,5 +45,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function prunable()
+    {
+        return static::whereNull('email_verified_at')
+            ->where('created_at', '<=', now()->subDays(3)); //menghapus user yang belum verifikasi email dan dibuat lebih dari 3 hari
     }
 }
